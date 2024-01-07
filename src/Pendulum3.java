@@ -1,9 +1,12 @@
 import java.awt.*;
-class Pendulum3 extends Canvas {
+import java.awt.image.BufferedImage;
+
+class Pendulum3 extends Canvas implements Runnable {
   double theta = 30.0 / 180.0 * Math.PI;
   double damp = 0.5;
   double driveAmp = 0.5;
   double driveFreq = 0.5;
+  BufferedImage bf = new BufferedImage(400, 400, BufferedImage.TYPE_INT_RGB);
   Pendulum3() {
     setSize(400, 400);
     Frame pictureFrame = new Frame("Driven, Damped, Pendulum");
@@ -12,23 +15,30 @@ class Pendulum3 extends Canvas {
     pictureFrame.add(canvasPanel);
     pictureFrame.pack();
     pictureFrame.setVisible(true);
+    Thread myThread = new Thread(this);
+    myThread.start();
   }
   public void paint(Graphics g) {
-    int x = 200 - (int) Math.round(150 * Math.sin(this.theta));
-    int y = 200 + (int) Math.round(150 * Math.cos(this.theta));
-    g.setColor(Color.blue);
-    g.drawOval(195, 195, 10, 10);
-    g.setColor(Color.black);
-    g.drawLine(200, 200, x, y);
-    g.setColor(Color.red);
-    g.drawOval(x - 15, y - 15, 30, 30);
+    int x = (int) Math.round(200 - 150 * Math.sin(this.theta));
+    int y = (int) Math.round(200 + 150 * Math.cos(this.theta));
+    Graphics bg = bf.getGraphics();
+    super.paint(bg);
+    bg.setColor(Color.lightGray);
+    bg.fillRect(0, 0, 400, 400);
+    bg.setColor(Color.blue);
+    bg.drawOval(195, 195, 10, 10);
+    bg.setColor(Color.black);
+    bg.drawLine(200, 200, x, y);
+    bg.setColor(Color.red);
+    bg.drawOval(x - 15, y - 15, 30, 30);
+    g.drawImage(bf, 0, 0, null);
   }
 
   double torque(double theta, double omega, double t) {
     return - Math.sin(theta) - this.damp * omega + this.driveAmp * Math.sin(this.driveFreq * t);
   }
   public void run() {
-    double dt = 0.0002;
+    double dt = 0.002;
     double thetaMid, omega, omegaMid, alpha, alphaMid, t;
     t = 0;
     this.damp = 0.5;
@@ -36,7 +46,7 @@ class Pendulum3 extends Canvas {
     this.driveFreq = 0.5;
     omega = 0;
     while(true) {
-      for (int i = 0; i < 0.01/dt; i++) {
+      for (int i = 0; i < 0.1/dt; i++) {
         //Euler - Richardson algorithm
         alpha = torque(theta, omega, t);
         thetaMid = theta + omega * 0.5 * dt;
@@ -46,7 +56,7 @@ class Pendulum3 extends Canvas {
         omega += alphaMid * dt;
         t += dt;
       }
-      repaint();
+      paint(this.getGraphics());
       try {
         Thread.sleep(10);
       } catch (InterruptedException e) {
@@ -55,8 +65,7 @@ class Pendulum3 extends Canvas {
     }
   }
   public static void main(String[] args) {
-    Pendulum3 pendulum = new Pendulum3();
-    pendulum.run();
+    new Pendulum3();
     System.out.println("Hello Animation!");
   }
 }

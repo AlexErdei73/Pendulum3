@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c274329-072e-45c6-8f0c-827aaa0dbe60" name="Changes" comment="Add boilerplate to use Canvas for drawing">
+    <list default="true" id="4c274329-072e-45c6-8f0c-827aaa0dbe60" name="Changes" comment="Make the pendulum animate">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pendulum3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pendulum3.java" afterDir="false" />
     </list>
@@ -78,13 +78,22 @@
       <option name="project" value="LOCAL" />
       <updated>1704573154116</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Make the pendulum animate">
+      <option name="closed" value="true" />
+      <created>1704652857017</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1704652857017</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Bootstrap project with IntelliJ" />
     <MESSAGE value="Add README.md" />
     <MESSAGE value="Add boilerplate to use Canvas for drawing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add boilerplate to use Canvas for drawing" />
+    <MESSAGE value="Make the pendulum animate" />
+    <option name="LAST_COMMIT_MESSAGE" value="Make the pendulum animate" />
   </component>
 </project>
