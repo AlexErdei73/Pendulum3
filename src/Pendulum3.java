@@ -13,6 +13,8 @@ class Pendulum3 extends Canvas implements Runnable {
     Panel canvasPanel = new Panel();
     canvasPanel.add(this);
     pictureFrame.add(canvasPanel);
+    Panel controlPanel = new Panel();
+    pictureFrame.add(controlPanel,BorderLayout.SOUTH);
     pictureFrame.pack();
     pictureFrame.setVisible(true);
     Thread myThread = new Thread(this);
@@ -22,7 +24,6 @@ class Pendulum3 extends Canvas implements Runnable {
     int x = (int) Math.round(200 - 150 * Math.sin(this.theta));
     int y = (int) Math.round(200 + 150 * Math.cos(this.theta));
     Graphics bg = bf.getGraphics();
-    super.paint(bg);
     bg.setColor(Color.lightGray);
     bg.fillRect(0, 0, 400, 400);
     bg.setColor(Color.blue);
@@ -66,6 +67,5 @@ class Pendulum3 extends Canvas implements Runnable {
   }
   public static void main(String[] args) {
     new Pendulum3();
-    System.out.println("Hello Animation!");
   }
 }
