@@ -1,6 +1,8 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 
 class Pendulum3 extends Canvas implements Runnable {
@@ -15,6 +17,13 @@ class Pendulum3 extends Canvas implements Runnable {
     Pendulum3() {
         setSize(400, 400);
         Frame pictureFrame = new Frame("Driven, Damped, Pendulum");
+        pictureFrame.addWindowListener(new WindowAdapter() {
+          @Override
+          public void windowClosing(WindowEvent e) {
+            super.windowClosing(e);
+            System.exit(0);
+          }
+        });
         Panel canvasPanel = new Panel();
         canvasPanel.add(this);
         pictureFrame.add(canvasPanel);

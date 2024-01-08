@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="22835d4d-1188-407a-9b3f-c64425d50ca4" name="Changes" comment="Control driveAmp by DoubleScroller">
+    <list default="true" id="22835d4d-1188-407a-9b3f-c64425d50ca4" name="Changes" comment="Add startStopButton to controlPanel">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pendulum3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pendulum3.java" afterDir="false" />
     </list>
@@ -76,12 +76,21 @@
       <option name="project" value="LOCAL" />
       <updated>1704680736539</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Add startStopButton to controlPanel">
+      <option name="closed" value="true" />
+      <created>1704748946767</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1704748946767</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add DoubleScroller class" />
     <MESSAGE value="Control driveAmp by DoubleScroller" />
-    <option name="LAST_COMMIT_MESSAGE" value="Control driveAmp by DoubleScroller" />
+    <MESSAGE value="Add startStopButton to controlPanel" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add startStopButton to controlPanel" />
   </component>
 </project>
