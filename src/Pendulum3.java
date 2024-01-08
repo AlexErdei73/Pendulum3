@@ -67,6 +67,8 @@ class Pendulum3 extends Canvas implements Runnable {
     }
 
     public void run() {
+        Plot phaseSpacePlot = new Plot("Phase Space Plot", -Math.PI, Math.PI, 0.5, -Math.PI, Math.PI, 0.5);
+        phaseSpacePlot.setPointSize(1);
         double dt = 0.002;
         double thetaMid, omega, omegaMid, alpha, alphaMid, t;
         t = 0;
@@ -82,15 +84,19 @@ class Pendulum3 extends Canvas implements Runnable {
                     theta += omegaMid * dt;
                     omega += alphaMid * dt;
                     t += dt;
+
+                    double normedTheta = theta;
+                    while (normedTheta < -Math.PI || normedTheta > Math.PI) {
+                        if (normedTheta > Math.PI) normedTheta -= 2*Math.PI;
+                        if (normedTheta < -Math.PI) normedTheta += 2*Math.PI;
+                    }
+                    phaseSpacePlot.addPoint(normedTheta, omega);
                 }
                 paint(this.getGraphics());
             }
+            if (this.driveAmp != this.driveAmpScroller.getValue()) phaseSpacePlot.clearThePlot();
             this.driveAmp = this.driveAmpScroller.getValue();
-            try {
-                Thread.sleep(10);
-            } catch (InterruptedException e) {
-
-            }
+            try { Thread.sleep(10); } catch (InterruptedException e) {}
         }
     }
 
