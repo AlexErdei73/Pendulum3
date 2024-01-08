@@ -7,6 +7,7 @@ class Pendulum3 extends Canvas implements Runnable {
   double driveAmp = 0.5;
   double driveFreq = 0.5;
   BufferedImage bf = new BufferedImage(400, 400, BufferedImage.TYPE_INT_RGB);
+  DoubleScroller driveAmpScroller;
   Pendulum3() {
     setSize(400, 400);
     Frame pictureFrame = new Frame("Driven, Damped, Pendulum");
@@ -14,6 +15,8 @@ class Pendulum3 extends Canvas implements Runnable {
     canvasPanel.add(this);
     pictureFrame.add(canvasPanel);
     Panel controlPanel = new Panel();
+    this.driveAmpScroller = new DoubleScroller("Drive Amplitude", 0, 2.0, 0.01, 0.5);
+    controlPanel.add(this.driveAmpScroller);
     pictureFrame.add(controlPanel,BorderLayout.SOUTH);
     pictureFrame.pack();
     pictureFrame.setVisible(true);
@@ -42,9 +45,6 @@ class Pendulum3 extends Canvas implements Runnable {
     double dt = 0.002;
     double thetaMid, omega, omegaMid, alpha, alphaMid, t;
     t = 0;
-    this.damp = 0.5;
-    this.driveAmp = 0.5;
-    this.driveFreq = 0.5;
     omega = 0;
     while(true) {
       for (int i = 0; i < 0.1/dt; i++) {
@@ -58,6 +58,7 @@ class Pendulum3 extends Canvas implements Runnable {
         t += dt;
       }
       paint(this.getGraphics());
+      this.driveAmp = this.driveAmpScroller.getValue();
       try {
         Thread.sleep(10);
       } catch (InterruptedException e) {
